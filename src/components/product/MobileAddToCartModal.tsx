@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ShoppingCart, X, Star, Minus, Plus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { useCart } from '@/hooks/useCart';
+import { useCartContext } from '@/contexts/CartContext';
 import { useProductVariants } from '@/hooks/useProductVariants';
 import { useProductReviews } from '@/hooks/useReviews';
 import OptimizedImage from '../OptimizedImage';
@@ -45,7 +45,7 @@ const MobileAddToCartModal = ({
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
   const { toast } = useToast();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
   const { variants, getVariantsByType, getVariantTypes } = useProductVariants(product.product_id);
   const { data: reviews = [], isLoading: reviewsLoading } = useProductReviews(product.product_id);
 
