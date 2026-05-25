@@ -5,7 +5,7 @@ import MobileNav from '@/components/MobileNav';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useAuth } from '@/hooks/useAuth';
-import { useCart } from '@/hooks/useCart';
+import { useCartContext } from '@/contexts/CartContext';
 import { useWishlist } from '@/hooks/useWishlist';
 import { isMobileUserAgent } from '@/hooks/use-mobile';
 import { useToast } from '@/hooks/use-toast';
@@ -14,7 +14,7 @@ import { WishlistShareButton } from '@/components/wishlist/WishlistShareButton';
 const WishlistPage = () => {
   const isMobile = isMobileUserAgent();
   const { user } = useAuth();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
   const { wishlistItems, loading, removeFromWishlist: removeFromWishlistHook } = useWishlist();
   const { toast } = useToast();
 
