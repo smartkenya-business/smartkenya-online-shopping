@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ShoppingCart, Heart, Share2, Check, Zap, Minus, Plus } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
-import { useCart } from '@/hooks/useCart';
+import { useCartContext } from '@/contexts/CartContext';
 import { useWishlist } from '@/hooks/useWishlist';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -35,7 +35,7 @@ const AddToCartSection = ({
   const [isBuyingNow, setIsBuyingNow] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const { toast } = useToast();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
   const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
 
   const inStock = (product.stock || 0) > 0;
