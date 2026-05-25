@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Zap, X, Star, Minus, Plus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { useCart } from '@/hooks/useCart';
+import { useCartContext } from '@/contexts/CartContext';
 import { useAuth } from '@/hooks/useAuth';
 import { useProductVariants } from '@/hooks/useProductVariants';
 import { useProductReviews } from '@/hooks/useReviews';
@@ -47,7 +47,7 @@ const MobileBuyNowModal = ({
   const [isBuyingNow, setIsBuyingNow] = useState(false);
   const [showAnimation, setShowAnimation] = useState(false);
   const { toast } = useToast();
-  const { addToCart } = useCart();
+  const { addToCart } = useCartContext();
   const { user } = useAuth();
   const { variants, getVariantsByType, getVariantTypes } = useProductVariants(product.product_id);
   const { data: reviews = [], isLoading: reviewsLoading } = useProductReviews(product.product_id);
